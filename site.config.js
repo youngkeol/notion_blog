@@ -20,7 +20,6 @@ const CONFIG = {
   blog: {
     title: 'gory-log',
     description: 'welcome to gory-log!',
-    theme: 'light' // ['light', 'dark', 'auto']
   },
 
   // CONFIG configration (required)
