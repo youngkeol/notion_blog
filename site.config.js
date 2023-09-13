@@ -18,8 +18,8 @@ const CONFIG = {
   ],
   // blog setting (required)
   blog: {
-    title: "gory-log",
-    description: "welcome to gory-log!",
+    title: "Gory",
+    description: "welcome to Gory!",
   },
 
   // CONFIG configration (required)
@@ -47,10 +47,10 @@ const CONFIG = {
     },
   },
   utterances: {
-    enable: false,
+    enable: true,
     config: {
       //repo: process.env.NEXT_PUBLIC_UTTERANCES_REPO,
-      repo: 'morethanmin/morethan-logaaa',
+      repo: 'morethanmin/aa',
       "issue-term": "og:title",
       label: "💬 Utterances",
     },
