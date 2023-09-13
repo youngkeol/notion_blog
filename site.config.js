@@ -1,9 +1,9 @@
 const CONFIG = {
   // profile setting (required)
   profile: {
-    name: "gory",
+    name: "Gory",
     image: "/avatar.svg", // If you want to create your own notion avatar, check out https://notion-avatar.vercel.app
-    role: "frontend developer",
+    role: "",
     bio: "Hello 👋",
     email: "younggory.work@gmail.com",
     linkedin: "",
@@ -50,7 +50,7 @@ const CONFIG = {
     enable: false,
     config: {
       //repo: process.env.NEXT_PUBLIC_UTTERANCES_REPO,
-      repo: 'morethanmin/morethan-log',
+      repo: 'morethanmin/morethan-logaaa',
       "issue-term": "og:title",
       label: "💬 Utterances",
     },
