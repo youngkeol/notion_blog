@@ -12,7 +12,7 @@ const CONFIG = {
     },
     projects: [
         {
-            name: `gory-log`,
+            name: `gori-log`,
             href: "https://github.com/youngkeol",
         },
     ],
