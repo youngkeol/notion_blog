@@ -26,7 +26,7 @@ const CategorySelect: React.FC<Props> = () => {
     };
     return (
         <StyledWrapper>
-            <div>&nbsp;</div>
+            <div style={{ marginBottom: "20px" }}>&nbsp;</div>
             {/*  수정
           
       <div ref={dropdownRef} className="wrapper" onClick={handleOpen}>
