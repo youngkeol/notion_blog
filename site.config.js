@@ -1,11 +1,11 @@
 const CONFIG = {
     // profile setting (required)
     profile: {
-        name: "Gori",
+        name: "<Gori />",
         image: "/avatar.svg", // If you want to create your own notion avatar, check out https://notion-avatar.vercel.app
         role: "",
         bio: "Hello 👋",
-        email: "younggory.work@gmail.com",
+        email: "younggori.work@gmail.com",
         linkedin: "",
         github: "youngkeol",
         instagram: "",
@@ -18,7 +18,7 @@ const CONFIG = {
     ],
     // blog setting (required)
     blog: {
-        title: "Gori",
+        title: "<Gori />",
         description: "welcome to Gori!",
     },
 
