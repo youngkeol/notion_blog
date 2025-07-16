@@ -3,6 +3,7 @@ const CONFIG = {
     profile: {
         name: "<Gori />",
         image: "/avatar.png", // If you want to create your own notion avatar, check out https://notion-avatar.vercel.app
+        mobileImage: "/mobile-avatar.png",
         role: "",
         bio: "Hello 👋",
         email: "younggori.work@gmail.com",

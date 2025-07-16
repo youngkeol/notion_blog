@@ -19,10 +19,9 @@ const ProfileCard: React.FC<Props> = () => {
             fill 
             alt="" 
             style={{
-              width: '90%',
-              margin: 'auto',
-              left: '5%',
-              top: '5%'
+              width: '100%',
+              height: '100%',
+              margin: 'auto'
             }}
           />
         </div>
