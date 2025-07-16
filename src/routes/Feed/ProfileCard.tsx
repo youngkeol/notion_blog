@@ -17,7 +17,7 @@ const ProfileCard: React.FC<Props> = () => {
           <Image 
             src={CONFIG.profile.image} 
             fill 
-            alt="" 
+            alt="profile_image"
             style={{
               width: '100%',
               height: '100%',
