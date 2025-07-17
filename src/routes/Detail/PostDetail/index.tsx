@@ -14,18 +14,31 @@ const PostDetail: React.FC<Props> = () => {
 
   if (!data) return null
 
-  const category = (data.category && data.category?.[0]) || undefined
+  //const category = (data.category && data.category?.[0]) || undefined
 
   return (
     <StyledWrapper>
       <article>
-        {category && (
+        {/* {category && (
           <div css={{ marginBottom: "0.5rem" }}>
             <Category readOnly={data.status?.[0] === "PublicOnDetail"}>
               {category}
             </Category>
           </div>
+        )} */}
+
+
+        {data.category && data.category.length > 0 && (
+          <div css={{ marginBottom: "0.5rem", display: "flex", gap: "0.5rem" }}>
+            {data.category.map((cat: string, idx: number) => (
+              <Category key={idx} readOnly={data.status?.[0] === "PublicOnDetail"}>
+                {cat}
+              </Category>
+            ))}
+          </div>
         )}
+        
+        
         {data.type[0] === "Post" && <PostHeader data={data} />}
         <div>
           <NotionRenderer recordMap={data.recordMap} />
