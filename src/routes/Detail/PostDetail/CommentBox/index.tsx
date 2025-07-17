@@ -1,6 +1,7 @@
 import { TPost } from "src/types"
 import { CONFIG } from "site.config"
 import dynamic from "next/dynamic"
+import Giscus from "./Giscus";
 
 const UtterancesComponent = dynamic(
   () => {
@@ -26,6 +27,7 @@ const CommentBox: React.FC<Props> = ({ data }) => {
       {CONFIG.cusdis.enable && (
         <CusdisComponent id={data.id} slug={data.slug} title={data.title} />
       )}
+      <Giscus />
     </div>
   )
 }
