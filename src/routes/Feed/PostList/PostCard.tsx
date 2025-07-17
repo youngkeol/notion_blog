@@ -17,11 +17,19 @@ const PostCard: React.FC<Props> = ({ data }) => {
     return (
         <StyledWrapper href={`/${data.slug}`}>
             <article>
-                {category && (
+                {/* {category && (
                     <div className="category">
                         <Category>{category}</Category>
                     </div>
+                )} */}
+                {data.category && data.category.length > 0 && (
+                    <div className="category">
+                        {data.category.map((cat: string, idx: number) => (
+                        <Category key={idx}>{cat}</Category>
+                        ))}
+                    </div>
                 )}
+
                 {data.thumbnail && (
                     <div className="thumbnail">
                         <Image
