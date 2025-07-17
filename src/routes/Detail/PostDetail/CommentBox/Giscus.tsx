@@ -1,6 +1,6 @@
 import { useEffect, useRef } from "react";
 
-const Giscus = () => {
+const Giscus = ({theme}: {theme: "light" | "dark"}) => {
   const giscusRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -16,7 +16,7 @@ const Giscus = () => {
       script.setAttribute("data-reactions-enabled", "1");
       script.setAttribute("data-emit-metadata", "0");
       script.setAttribute("data-input-position", "top");
-      script.setAttribute("data-theme", "light");
+      script.setAttribute("data-theme", theme);
       script.setAttribute("data-lang", "ko");
       script.setAttribute("data-loading", "lazy");
       script.crossOrigin = "anonymous";
@@ -24,6 +24,12 @@ const Giscus = () => {
       giscusRef.current.appendChild(script);
     }
   }, []);
+
+  useEffect(() => {
+    if (giscusRef.current) {
+      giscusRef.current.querySelector("iframe")?.setAttribute("data-theme", theme);
+    }
+  }, [theme]);  
 
   return <div className="giscus" ref={giscusRef} />;
 };

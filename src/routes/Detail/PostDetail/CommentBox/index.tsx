@@ -27,7 +27,7 @@ const CommentBox: React.FC<Props> = ({ data }) => {
       {CONFIG.cusdis.enable && (
         <CusdisComponent id={data.id} slug={data.slug} title={data.title} />
       )}
-      <Giscus />
+      <Giscus theme={scheme === "dark" ? "dark" : "light"} />
     </div>
   )
 }
