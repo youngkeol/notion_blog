@@ -22,7 +22,7 @@ type Props = {
 }
 
 const CommentBox: React.FC<Props> = ({ data }) => {
-  const scheme = useScheme();
+  const [scheme] = useScheme();
   // 값이 없으면 기본값 'light' 사용
   const theme = scheme === "dark" ? "dark" : "light";
  
