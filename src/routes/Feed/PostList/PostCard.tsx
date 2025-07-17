@@ -95,6 +95,8 @@ const StyledWrapper = styled(Link)`
             --left: 1rem;
             --z-index: 10;
             padding: 1rem 1rem 0 1rem;
+            display: flex;
+            gap: 0.6rem;
         }
 
         > .thumbnail {
