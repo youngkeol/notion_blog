@@ -55,4 +55,6 @@ const StyledWrapper = styled.div`
   line-height: 1.25rem;
   opacity: 0.9;
   color: ${colors.dark.gray1};
+  display: flex;
+  gap: 0.6rem;
 `
