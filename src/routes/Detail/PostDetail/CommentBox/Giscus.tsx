@@ -25,11 +25,22 @@ const Giscus = ({theme}: {theme: "light" | "dark"}) => {
     }
   }, []);
 
-  useEffect(() => {
-    if (giscusRef.current) {
-      giscusRef.current.querySelector("iframe")?.setAttribute("data-theme", theme);
-    }
-  }, [theme]);  
+   // theme이 바뀔 때마다 iframe에 postMessage로 테마 변경
+   useEffect(() => {
+    const iframe = giscusRef.current?.querySelector("iframe");
+    if (!iframe) return;
+    iframe.contentWindow?.postMessage(
+      {
+        giscus: {
+          setConfig: {
+            theme: theme,
+          },
+        },
+      },
+      "https://giscus.app"
+    );
+  }, [theme]);
+
 
   return <div className="giscus" ref={giscusRef} />;
 };
