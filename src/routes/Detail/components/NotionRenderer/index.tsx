@@ -125,7 +125,7 @@ const StyledWrapper = styled.div`
   /* 이미지 컨테이너 div에 border-radius 적용 */
   .notion-asset-wrapper-image > div,
   .notion-asset-wrapper > div {
-    width: 100%;
+    width: 100% !important;
     border-radius: 6px;
     overflow: hidden;
   }
