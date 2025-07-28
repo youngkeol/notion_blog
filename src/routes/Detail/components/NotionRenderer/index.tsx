@@ -121,4 +121,12 @@ const StyledWrapper = styled.div`
   .notion-page {
     padding: 0;
   }
+  
+  /* 이미지 컨테이너 div에 border-radius 적용 */
+  .notion-asset-wrapper-image > div,
+  .notion-asset-wrapper > div {
+    width: 100%;
+    border-radius: 6px;
+    overflow: hidden;
+  }
 `
