@@ -9,11 +9,14 @@ import "react-notion-x/src/styles.css"
 
 // used for code syntax highlighting (optional)
 import "prismjs/themes/prism-tomorrow.css"
+// import "prismjs/themes/prism-tomorrow.css" // 정적 임포트 제거
+
 
 // used for rendering equations (optional)
 
 import "katex/dist/katex.min.css"
-import { FC } from "react"
+//import { FC } from "react"
+import { FC, useEffect } from "react"
 import styled from "@emotion/styled"
 
 const _NotionRenderer = dynamic(
@@ -27,6 +30,8 @@ const Code = dynamic(() =>
       import("prismjs/components/prism-markup-templating.js"),
       import("prismjs/components/prism-markup.js"),
       import("prismjs/components/prism-bash.js"),
+      import("prismjs/components/prism-shell-session.js"),
+      import("prismjs/components/prism-powershell.js"),
       import("prismjs/components/prism-c.js"),
       import("prismjs/components/prism-cpp.js"),
       import("prismjs/components/prism-csharp.js"),
@@ -91,6 +96,29 @@ type Props = {
 
 const NotionRenderer: FC<Props> = ({ recordMap }) => {
   const [scheme] = useScheme()
+  
+  // 동적으로 Prism 테마 로드
+  useEffect(() => {
+    // 기존 Prism 테마 제거
+    const existingLink = document.querySelector('link[data-prism-theme]')
+    if (existingLink) {
+      existingLink.remove()
+    }
+    
+    // 새 테마 로드
+    const link = document.createElement('link')
+    link.rel = 'stylesheet'
+    link.setAttribute('data-prism-theme', 'true')
+    
+    if (scheme === 'dark') {
+      link.href = 'https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css'
+    } else {
+      link.href = 'https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css'
+    }
+    
+    document.head.appendChild(link)
+  }, [scheme])
+  
   return (
     <StyledWrapper>
       <_NotionRenderer
@@ -130,6 +158,9 @@ const StyledWrapper = styled.div`
     overflow: hidden;
   }
   
+  .notion-list {
+    width: 100%;
+  }
   /* 중첩된 리스트 구조 수정 - ul 바로 안에 ul이 있는 경우 */
   .notion-list > .notion-list {
     /* ul 바로 안의 ul을 li처럼 표시 */
@@ -145,12 +176,29 @@ const StyledWrapper = styled.div`
   }
   
   /* 리스트 들여쓰기 조정 */
-  .notion-list-disc {
-    margin-left: 1em;
-  }
-  
   .notion-list-disc > .notion-list-disc {
     margin-left: 0;
     padding-left: 0;
   }
+  
+  
+  /* 코드 블럭 스타일 개선 */
+  .notion-code {
+    border-radius: 6px;
+    overflow-x: auto;
+  }
+  
+  .notion-code pre {
+    margin: 0;
+    padding: 1rem;
+    overflow-x: auto;
+  }
+
+  .notion-text {
+    padding:3px 4px;
+  }
+  .notion-callout-text .notion-text {
+    padding:3px 2px;
+  }
+
 `
