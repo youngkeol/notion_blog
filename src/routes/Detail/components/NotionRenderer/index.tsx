@@ -151,6 +151,6 @@ const StyledWrapper = styled.div`
   
   .notion-list-disc > .notion-list-disc {
     margin-left: 0;
-    padding-left: 1em;
+    padding-left: 0;
   }
 `
