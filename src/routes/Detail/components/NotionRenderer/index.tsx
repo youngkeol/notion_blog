@@ -129,4 +129,28 @@ const StyledWrapper = styled.div`
     border-radius: 6px;
     overflow: hidden;
   }
+  
+  /* 중첩된 리스트 구조 수정 - ul 바로 안에 ul이 있는 경우 */
+  .notion-list > .notion-list {
+    /* ul 바로 안의 ul을 li처럼 표시 */
+    display: list-item;
+    list-style: none;
+    margin-left: 0;
+    padding-left: 1.5em;
+  }
+  
+  /* 중첩된 리스트 안의 figure를 올바르게 표시 */
+  .notion-list > .notion-list > .notion-asset-wrapper {
+    margin: 0.5em 0;
+  }
+  
+  /* 리스트 들여쓰기 조정 */
+  .notion-list-disc {
+    margin-left: 1em;
+  }
+  
+  .notion-list-disc > .notion-list-disc {
+    margin-left: 0;
+    padding-left: 1em;
+  }
 `
