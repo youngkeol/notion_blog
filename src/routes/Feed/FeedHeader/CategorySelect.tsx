@@ -96,7 +96,7 @@ const CategorySelect: React.FC<Props> = () => {
 
     return (
         <StyledWrapper>
-            <div style={{ marginBottom: "20px" }}>&nbsp;</div>
+            {/* <div style={{ marginBottom: "20px" }}>&nbsp;</div> */}
             
             <div ref={dropdownRef} className="wrapper" onClick={handleOpen}>
                 {currentCategory} Posts <MdExpandMore />
