@@ -23,21 +23,33 @@ export const getStaticPaths = async () => {
 
   return {
     paths: filteredPost.map((row) => `/${row.slug}`),
-    fallback: true,
+    fallback: false, // 빌드 시 모든 페이지 미리 생성 (빠른 로딩)
   }
 }
 
 export const getStaticProps: GetStaticProps = async (context) => {
   const slug = context.params?.slug
 
+  if (!slug || typeof slug !== 'string') {
+    return {
+      notFound: true,
+    }
+  }
+
+  // 전체 포스트 목록에서 해당 slug 찾기 (캐시 사용)
   const posts = await getPosts()
-  const feedPosts = filterPosts(posts)
-  await queryClient.prefetchQuery(queryKey.posts(), () => feedPosts)
+  const postDetail = posts.find((post) => post.slug === slug)
 
-  const detailPosts = filterPosts(posts, filter)
-  const postDetail = detailPosts.find((t: any) => t.slug === slug)
-  const recordMap = await getRecordMap(postDetail?.id!)
+  if (!postDetail) {
+    return {
+      notFound: true,
+    }
+  }
 
+  // 해당 페이지의 recordMap만 가져오기
+  const recordMap = await getRecordMap(postDetail.id)
+
+  // 해당 포스트 데이터만 prefetch
   await queryClient.prefetchQuery(queryKey.post(`${slug}`), () => ({
     ...postDetail,
     recordMap,

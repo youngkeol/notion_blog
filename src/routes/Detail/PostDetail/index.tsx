@@ -12,22 +12,16 @@ type Props = {}
 const PostDetail: React.FC<Props> = () => {
   const data = usePostQuery()
 
-  if (!data) return null
+  if (!data) {
+    return <div>Loading...</div>
+  }
 
-  //const category = (data.category && data.category?.[0]) || undefined
+  // type이 배열인지 문자열인지 확인
+  const postType = Array.isArray(data.type) ? data.type[0] : data.type
 
   return (
     <StyledWrapper>
       <article>
-        {/* {category && (
-          <div css={{ marginBottom: "0.5rem" }}>
-            <Category readOnly={data.status?.[0] === "PublicOnDetail"}>
-              {category}
-            </Category>
-          </div>
-        )} */}
-
-
         {data.category && data.category.length > 0 && (
           <div css={{ marginBottom: "0.5rem", display: "flex", gap: "0.5rem" }}>
             {data.category.map((cat: string, idx: number) => (
@@ -38,12 +32,11 @@ const PostDetail: React.FC<Props> = () => {
           </div>
         )}
         
-        
-        {data.type[0] === "Post" && <PostHeader data={data} />}
+        {postType === "Post" && <PostHeader data={data} />}
         <div>
           <NotionRenderer recordMap={data.recordMap} />
         </div>
-        {data.type[0] === "Post" && (
+        {postType === "Post" && (
           <>
             <Footer />
             <CommentBox data={data} />

@@ -38,8 +38,24 @@ Next.js static blog using Notion as a Content Management System (CMS). Supports 
 6. Deploy on Vercel, with the following environment variables.
 
    - `NOTION_PAGE_ID` (Required): The Notion page Id got from the Share to Web URL.
+   - `NOTION_TOKEN` (Required): Notion Integration Token for API access. Create one at [Notion Integrations](https://www.notion.so/my-integrations).
    - `NEXT_PUBLIC_GOOGLE_MEASUREMENT_ID` : For Google analytics Plugin.
    - `NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION` : For Google search console Plugin.
+
+## ⚠️ Important: Notion API Migration
+
+This project has been migrated from Notion API v3 (unofficial) to the official Notion API v1. 
+
+**Required Setup:**
+1. Create a Notion Integration at [Notion Integrations](https://www.notion.so/my-integrations)
+2. Copy the Internal Integration Token
+3. Share your Notion database/page with the integration
+4. Set the `NOTION_TOKEN` environment variable with your integration token
+
+**API Changes:**
+- `queryCollection` → `/v1/databases/{id}/query`
+- `loadPageChunk` → `/v1/blocks/{id}/children`  
+- `getRecordValues` → `/v1/pages/{id}`
 
 ## 10 Steps to build your own morethan-log (by 23.06.23)
 

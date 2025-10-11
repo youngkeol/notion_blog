@@ -30,10 +30,11 @@ const PostCard: React.FC<Props> = ({ data }) => {
                     </div>
                 )}
 
-                {data.thumbnail && (
+                {data.thumbnail && 
+                 (Array.isArray(data.thumbnail) ? data.thumbnail.length > 0 : data.thumbnail.trim() !== '') && (
                     <div className="thumbnail">
                         <Image
-                            src={data.thumbnail}
+                            src={Array.isArray(data.thumbnail) ? data.thumbnail[0] : data.thumbnail}
                             fill
                             alt={data.title}
                             css={{ objectFit: "cover" }}

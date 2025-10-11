@@ -28,12 +28,12 @@ export function filterPosts(
     })
     // filter status
     .filter((post) => {
-      const postStatus = post.status[0]
+      const postStatus = Array.isArray(post.status) ? post.status[0] : post.status
       return acceptStatus.includes(postStatus)
     })
     // filter type
     .filter((post) => {
-      const postType = post.type[0]
+      const postType = Array.isArray(post.type) ? post.type[0] : post.type
       return acceptType.includes(postType)
     })
   return filteredPosts

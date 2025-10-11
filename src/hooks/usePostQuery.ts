@@ -8,7 +8,7 @@ const usePostQuery = () => {
   const { slug } = router.query
   const { data } = useQuery<PostDetail>({
     queryKey: queryKey.post(`${slug}`),
-    enabled: false,
+    enabled: false, // SSG로 prefetch된 데이터만 사용
   })
 
   return data

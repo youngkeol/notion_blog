@@ -23,7 +23,8 @@ const PostList: React.FC<Props> = ({ q }) => {
       // keyword
       newFilteredPosts = newFilteredPosts.filter((post) => {
         const tagContent = post.tags ? post.tags.join(" ") : ""
-        const searchContent = post.title + post.summary + tagContent
+        const categoryContent = post.category ? post.category.join(" ") : ""
+        const searchContent = post.title + post.summary + tagContent + categoryContent
         return searchContent.toLowerCase().includes(q.toLowerCase())
       })
 

@@ -1,6 +1,4 @@
-import { Block } from 'notion-types'
-
-export const customMapImageUrl = (url: string, block: Block): string => {
+export const customMapImageUrl = (url: string, block: any): string => {
   if (!url) {
     throw new Error("URL can't be empty")
   }
@@ -43,12 +41,17 @@ export const customMapImageUrl = (url: string, block: Block): string => {
   }`
 
   const notionImageUrlV2 = new URL(url)
-  let table = block.parent_table === 'space' ? 'block' : block.parent_table
-  if (table === 'collection' || table === 'team') {
-    table = 'block'
+  let table = 'block' // API v1에서는 기본적으로 block 사용
+  if (block && block.parent_table) {
+    table = block.parent_table === 'space' ? 'block' : block.parent_table
+    if (table === 'collection' || table === 'team') {
+      table = 'block'
+    }
   }
   notionImageUrlV2.searchParams.set('table', table)
-  notionImageUrlV2.searchParams.set('id', block.id)
+  if (block && block.id) {
+    notionImageUrlV2.searchParams.set('id', block.id)
+  }
   notionImageUrlV2.searchParams.set('cache', 'v2')
 
   url = notionImageUrlV2.toString()
